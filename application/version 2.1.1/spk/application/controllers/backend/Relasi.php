@@ -44,7 +44,8 @@ class Relasi extends CI_Controller
 			$this->load->view('backend/relasi/v_ubah', $data);
 		} else {
 			$this->relasi_model->ubah($this->input->post('kode_crips'));
-			redirect('relasi');
+			echo $this->session->set_flashdata('msg', 'success-ubah');
+			redirect('backend/relasi');
 		}
 	}
 

@@ -38,7 +38,8 @@ class Kriteria extends CI_Controller
 				'bobot' => $this->input->post('bobot'),
 			);
 			$this->kriteria_model->tambah($fields);
-			redirect('kriteria');
+			echo $this->session->set_flashdata('msg', 'success');
+			redirect('backend/kriteria');
 		}
 	}
 
@@ -60,14 +61,16 @@ class Kriteria extends CI_Controller
 				'bobot' => $this->input->post('bobot'),
 			);
 			$this->kriteria_model->ubah($fields, $ID);
-			redirect('kriteria');
+			echo $this->session->set_flashdata('msg', 'success-ubah');
+			redirect('backend/kriteria');
 		}
 	}
 
 	public function hapus($ID = null)
 	{
 		$this->kriteria_model->hapus($ID);
-		redirect('kriteria');
+		echo $this->session->set_flashdata('msg', 'success-hapus');
+		redirect('backend/kriteria');
 	}
 
 	public function cetak($search = '')

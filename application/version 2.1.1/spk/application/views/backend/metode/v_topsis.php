@@ -303,7 +303,7 @@
                             <div class="panel-body">
                                 <div class="panel-heading">Matrik Solusi Ideal</div>
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-striped table-hover">
+                                    <table class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
                                                 <th></th>
@@ -356,20 +356,20 @@
                                     <table class="table table-bordered table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Rank</th>
                                                 <th>Kode</th>
                                                 <th>Nama</th>
                                                 <th>Total</th>
+                                                <th>Rank</th>
                                             </tr>
                                         </thead>
                                         <?php foreach ($topsis->rank as $key => $val) :
                                             query("UPDATE tb_alternatif SET total_topsis='{$topsis->pref[$key]}', rank_topsis='$val' WHERE kode_alternatif='$key'");
                                         ?>
                                             <tr>
-                                                <td><?= $val ?> </td>
                                                 <td><?= $key ?></td>
                                                 <td><?= $rows['alternatif'][$key]->nama_alternatif ?></td>
                                                 <td><?= round($topsis->pref[$key], 4) ?></td>
+                                                <td><?= $val ?> </td>
                                             </tr>
                                         <?php endforeach ?>
                                     </table>
@@ -386,50 +386,6 @@
         </div><!-- Page Inner -->
     </main><!-- Page Content -->
     <div class="cd-overlay"></div>
-
-
-
-    <form id="add-row-form" action="<?php echo base_url() . 'backend/alternatif/insert' ?>" method="post" enctype="multipart/form-data">
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Add New Alternatif</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    <input type="text" name="nama" class="form-control" placeholder="Name" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="password" class="form-control" placeholder="Password" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required>
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control" name="level" required>
-                                        <option value="">No Selected</option>
-                                        <option value="1">Administrator</option>
-                                        <option value="2">Author</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
 
     <!-- Javascripts -->
     <script src="<?php echo base_url() . 'assets/plugins/jquery/jquery-2.1.4.min.js' ?>"></script>
@@ -453,18 +409,6 @@
     <script src="<?php echo base_url() . 'assets/js/dropify.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.js' ?>"></script>
 
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#mytable').DataTable();
-
-            $('.delete').on('click', function() {
-                var userid = $(this).data('userid');
-                $('#ModalDelete').modal('show');
-                $('[name="kode"]').val(userid);
-            });
-        });
-    </script>
 
 
 </body>

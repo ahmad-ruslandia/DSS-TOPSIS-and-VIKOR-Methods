@@ -171,6 +171,13 @@
                                 <p>Settings</p>
                             </a></li>
                     <?php else : ?>
+                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-pencil"></span>
+                                <p>Alternatif</p><span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="<?php echo site_url('backend/alternatif'); ?>">Alternatif</a></li>
+                            </ul>
+                        </li>
                     <?php endif; ?>
                     <li><a href="<?php echo site_url('logout'); ?>" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-log-out"></span>
                             <p>Log Out</p>
@@ -201,7 +208,7 @@
                                         </div>
                                         <div class="panel-body">
                                             <div class="col-md-10">
-                                                <canvas id="bar"></canvas>
+                                                <canvas id="line"></canvas>
                                             </div>
                                         </div>
                                     </div>
@@ -319,7 +326,7 @@
                     let chartY = []
                     data.map(data => {
                         chartX.push(data.nama_alternatif)
-                        chartY.push((data.rank_topsis) + (data.rank_vikor))
+                        chartY.push((+data.total_topsis) + (-data.total_vikor))
                     })
                     const chartData = {
                         labels: chartX,
@@ -339,9 +346,25 @@
                     }
                     switch (chartType) {
                         case 'pie':
-                            const pieColor = ['#04252c', '#21b5df', '#71b59c', '#325d53', '#e69977', '#325d53']
+                            const randomNum = () => Math.floor(Math.random() * (235 - 52 + 1) + 52);
+                            //const pieColor = () => `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
+                            const pieColor = [`rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`,
+                                `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`,
+                                `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`,
+                                `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`,
+                                `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`,
+                                `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`,
+                                `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`,
+                                `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`,
+                                `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`,
+                                `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`,
+                                `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`
+                            ];
+
                             chartData.datasets[0].backgroundColor = pieColor
-                            chartData.datasets[0].borderColor = pieColor
+                            chartData.datasets[0].borderColor = ['#ffff']
+                            chartData.datasets[0].borderWidth = 2
+
                             break;
                         case 'bar':
                             chartData.datasets[0].backgroundColor = ['#96bcbe']

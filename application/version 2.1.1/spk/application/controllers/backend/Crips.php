@@ -37,7 +37,8 @@ class Crips extends CI_Controller
 				'nilai' => $this->input->post('nilai'),
 			);
 			$this->crips_model->tambah($fields);
-			redirect('crips');
+			echo $this->session->set_flashdata('msg', 'success');
+			redirect('backend/crips');
 		}
 	}
 
@@ -59,14 +60,16 @@ class Crips extends CI_Controller
 				'nilai' => $this->input->post('nilai'),
 			);
 			$this->crips_model->ubah($fields, $ID);
-			redirect('crips');
+			echo $this->session->set_flashdata('msg', 'success-ubah');
+			redirect('backend/crips');
 		}
 	}
 
 	public function hapus($ID = null)
 	{
 		$this->crips_model->hapus($ID);
-		redirect('crips');
+		echo $this->session->set_flashdata('msg', 'success-hapus');
+		redirect('backend/crips');
 	}
 
 	public function cetak($search = '')

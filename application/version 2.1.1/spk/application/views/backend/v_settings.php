@@ -261,8 +261,8 @@
     <?php if ($this->session->flashdata('msg') == 'success') : ?>
         <script type="text/javascript">
             $.toast({
-                heading: 'Success',
-                text: "Site Information Saved!",
+                heading: 'Sukses',
+                text: "Informasi Site Tersimpan!",
                 showHideTransition: 'slide',
                 icon: 'success',
                 hideAfter: false,

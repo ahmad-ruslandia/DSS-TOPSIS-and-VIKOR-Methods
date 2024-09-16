@@ -433,7 +433,6 @@
                     error: 'error'
                 }
             });
-
             $('.delete').on('click', function() {
                 var userid = $(this).data('userid');
                 $('#ModalDelete').modal('show');

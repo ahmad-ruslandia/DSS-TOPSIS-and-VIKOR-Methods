@@ -166,17 +166,17 @@
 <div class="table-responsive collapse">
     <table class="table table-bordered table-striped table-hover">
         <tr>
-            <th>Rank</th>
             <th>Kode</th>
             <th>Nama</th>
             <th>Total</th>
+            <th>Rank</th>
         </tr>
         <?php foreach ($topsis->rank as $key => $val) : ?>
             <tr>
-                <td><?= $val ?> </td>
                 <td><?= $key ?></td>
                 <td><?= $alternatif[$key]->nama_alternatif ?></td>
                 <td><?= round($topsis->pref[$key], 4) ?></td>
+                <td><?= $val ?> </td>
             </tr>
         <?php endforeach ?>
     </table>

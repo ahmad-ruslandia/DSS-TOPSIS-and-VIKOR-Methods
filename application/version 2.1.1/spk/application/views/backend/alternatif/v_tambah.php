@@ -195,7 +195,7 @@
 
                             <div class="panel-body">
 
-                                <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                                <form class="form-horizontal" action="<?php echo base_url() . 'backend/alternatif/tambah' ?>" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Kode Alternatif</label>
                                         <div class="col-sm-10">
@@ -273,8 +273,8 @@
     <?php if ($this->session->flashdata('msg') == 'success') : ?>
         <script type="text/javascript">
             $.toast({
-                heading: 'Success',
-                text: "Site Information Saved!",
+                heading: 'Sukses',
+                text: "Alternatif Di Tambahkan!",
                 showHideTransition: 'slide',
                 icon: 'success',
                 hideAfter: false,

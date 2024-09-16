@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Agu 2024 pada 04.25
+-- Waktu pembuatan: 08 Sep 2024 pada 16.15
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 5.6.40
 
@@ -190,7 +190,18 @@ INSERT INTO `tbl_visitors` (`visit_id`, `visit_date`, `visit_ip`, `visit_platfor
 (541401, '2024-08-11 16:06:08', '::1', 'Chrome'),
 (541402, '2024-08-12 15:40:33', '127.0.0.1', 'Chrome'),
 (541403, '2024-08-12 16:29:30', '::1', 'Chrome'),
-(541404, '2024-08-13 01:52:02', '127.0.0.1', 'Chrome');
+(541404, '2024-08-13 01:52:02', '127.0.0.1', 'Chrome'),
+(541405, '2024-08-14 02:17:22', '::1', 'Chrome'),
+(541406, '2024-08-18 15:11:22', '::1', 'Chrome'),
+(541407, '2024-08-18 16:46:22', '::1', 'Chrome'),
+(541408, '2024-08-20 16:17:18', '::1', 'Chrome'),
+(541409, '2024-08-26 16:50:05', '::1', 'Chrome'),
+(541410, '2024-08-27 16:54:42', '::1', 'Chrome'),
+(541411, '2024-09-04 10:19:47', '::1', 'Chrome'),
+(541412, '2024-09-05 14:11:51', '::1', 'Chrome'),
+(541413, '2024-09-05 16:09:20', '::1', 'Chrome'),
+(541414, '2024-09-06 16:15:20', '::1', 'Chrome'),
+(541415, '2024-09-07 17:05:13', '::1', 'Chrome');
 
 -- --------------------------------------------------------
 
@@ -245,14 +256,6 @@ INSERT INTO `tb_crips` (`kode_crips`, `kode_kriteria`, `nama_crips`, `nilai`) VA
 (507, 'C1', '> 4 Jam s.d.  6 Jam', 3),
 (508, 'C1', '> 6 Jam s.d. 8 Jam', 4),
 (509, 'C1', '>= 8 Jam', 5),
-(510, 'C7', 'Blacklist', 25),
-(511, 'C7', 'Netral', 50),
-(512, 'C7', 'Whitelist', 100),
-(513, 'C6', '1', 5),
-(514, 'C6', '2', 25),
-(515, 'C6', '3', 50),
-(516, 'C6', '4', 75),
-(517, 'C6', '>= 5', 100),
 (518, 'C5', '> 80 KG/ Minggu', 5),
 (519, 'C5', '> 60 KG s.d. 80 KG/ Minggu', 4),
 (520, 'C5', '> 40 KG s.d. 60 KG/ Minggu', 3),
@@ -420,7 +423,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT untuk tabel `tbl_visitors`
 --
 ALTER TABLE `tbl_visitors`
-  MODIFY `visit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=541405;
+  MODIFY `visit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=541416;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_crips`
@@ -432,7 +435,7 @@ ALTER TABLE `tb_crips`
 -- AUTO_INCREMENT untuk tabel `tb_rel_alternatif`
 --
 ALTER TABLE `tb_rel_alternatif`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=287;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

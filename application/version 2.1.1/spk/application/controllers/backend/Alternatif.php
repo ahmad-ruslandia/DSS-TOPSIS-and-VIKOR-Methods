@@ -39,7 +39,8 @@ class Alternatif extends CI_Controller
 
 			);
 			$this->alternatif_model->tambah($fields);
-			redirect('alternatif');
+			echo $this->session->set_flashdata('msg', 'success');
+			redirect('backend/alternatif');
 		}
 	}
 
@@ -63,7 +64,8 @@ class Alternatif extends CI_Controller
 				'nomor_telepon' => $this->input->post('nomor_telepon'),
 			);
 			$this->alternatif_model->ubah($fields, $ID);
-			redirect('alternatif');
+			echo $this->session->set_flashdata('msg', 'success-ubah');
+			redirect('backend/alternatif');
 		}
 	}
 
@@ -78,7 +80,8 @@ class Alternatif extends CI_Controller
 	public function hapus($ID = null)
 	{
 		$this->alternatif_model->hapus($ID);
-		redirect('alternatif');
+		echo $this->session->set_flashdata('msg', 'success-hapus');
+		redirect('backend/alternatif');
 	}
 
 	public function cetak($search = '')

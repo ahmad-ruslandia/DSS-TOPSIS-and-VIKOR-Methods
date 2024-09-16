@@ -171,6 +171,13 @@
                                 <p>Settings</p>
                             </a></li>
                     <?php else : ?>
+                        <li class="droplink active open"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-pencil"></span>
+                                <p>Alternatif</p><span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="active"><a href="<?php echo site_url('backend/alternatif'); ?>">Alternatif</a></li>
+                            </ul>
+                        </li>
                     <?php endif; ?>
                     <li><a href="<?php echo site_url('logout'); ?>" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-log-out"></span>
                             <p>Log Out</p>
@@ -205,7 +212,10 @@
                                             <th>Alamat</th>
                                             <th>Nama Pengelola</th>
                                             <th>No Telepon</th>
-                                            <th class="<?= ($this->session->userdata('level') == 'admin') ?>">Aksi</th>
+                                            <?php if ($this->session->userdata('access') == '1') : ?>
+                                                <th>Aksi</th>
+                                            <?php else : ?>
+                                            <?php endif; ?>
                                         </tr>
                                     </thead>
                                     <?php
@@ -219,10 +229,20 @@
                                             <td><?= $row->alamat ?></td>
                                             <td><?= $row->nama_pengelola ?></td>
                                             <td>+<?= $row->nomor_telepon ?></td>
-                                            <td class="<?= ($this->session->userdata('level') == 'admin') ?>">
-                                                <a class="btn btn-xs btn-warning" href="<?= site_url("backend/alternatif/ubah/$row->kode_alternatif") ?>"><span class="glyphicon glyphicon-edit"></span></a>
-                                                <a class="btn btn-xs btn-danger" href="<?= site_url("alternatif/hapus/$row->kode_alternatif") ?>" onclick="return confirm('Hapus data?')"><span class="glyphicon glyphicon-trash"></span></a>
-                                            </td>
+                                            <?php if ($this->session->userdata('access') == '1') : ?>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                            Action <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                                            <li><a href="<?= site_url("backend/alternatif/ubah/$row->kode_alternatif") ?>"><span class="icon-pencil"></span> Ubah</a></li>
+                                                            <li><a href="<?= site_url("backend/alternatif/hapus/$row->kode_alternatif") ?>"><span class="icon-trash"></span> Hapus</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            <?php else : ?>
+                                            <?php endif; ?>
                                         </tr>
                                     <?php endforeach ?>
                                 </table>
@@ -233,10 +253,10 @@
                                         <div class="panel-body">
                                             <div class="col-md-12">
                                                 <form class="form-inline">
-                                                    <div class="form-group <?= ($this->session->userdata('level') == 'admin')  ?>">
+                                                    <div class="form-group">
                                                         <a class="btn btn-default" href="<?= site_url('backend/alternatif/tambah') ?>"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
                                                     </div>
-                                                    <div class="form-group <?= ($this->session->userdata('level') == 'admin') ?>">
+                                                    <div class="form-group">
                                                         <a class="btn btn-default" target="_blank" href="<?= site_url('backend/alternatif/cetak?search=' . $this->input->get('search')) ?>"><span class="glyphicon glyphicon-print"></span> Cetak</a>
                                                     </div>
                                                 </form>
@@ -255,50 +275,6 @@
         </div><!-- Page Inner -->
     </main><!-- Page Content -->
     <div class="cd-overlay"></div>
-
-
-
-    <form id="add-row-form" action="<?php echo base_url() . 'backend/alternatif/insert' ?>" method="post" enctype="multipart/form-data">
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Add New Alternatif</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    <input type="text" name="nama" class="form-control" placeholder="Name" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="password" class="form-control" placeholder="Password" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required>
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control" name="level" required>
-                                        <option value="">No Selected</option>
-                                        <option value="1">Administrator</option>
-                                        <option value="2">Author</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
 
     <!-- Javascripts -->
     <script src="<?php echo base_url() . 'assets/plugins/jquery/jquery-2.1.4.min.js' ?>"></script>
@@ -326,16 +302,49 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#mytable').DataTable();
-
-            $('.delete').on('click', function() {
-                var userid = $(this).data('userid');
-                $('#ModalDelete').modal('show');
-                $('[name="kode"]').val(userid);
-            });
         });
     </script>
 
+    <!--Toast Message-->
+    <?php if ($this->session->flashdata('msg') == 'success') : ?>
+        <script type="text/javascript">
+            $.toast({
+                heading: 'Success',
+                text: "Alternatif Berhasil Di Tambah!",
+                showHideTransition: 'slide',
+                icon: 'success',
+                hideAfter: false,
+                position: 'bottom-right',
+                bgColor: '#7EC857'
+            });
+        </script>
+    <?php elseif ($this->session->flashdata('msg') == 'success-ubah') : ?>
+        <script type="text/javascript">
+            $.toast({
+                heading: 'Success',
+                text: "Alternatif Berhasil Di Ubah!",
+                showHideTransition: 'slide',
+                icon: 'success',
+                hideAfter: false,
+                position: 'bottom-right',
+                bgColor: '#7EC857'
+            });
+        </script>
+    <?php elseif ($this->session->flashdata('msg') == 'success-hapus') : ?>
+        <script type="text/javascript">
+            $.toast({
+                heading: 'Success',
+                text: "Alternatif Berhasil Di Hapus!",
+                showHideTransition: 'slide',
+                icon: 'success',
+                hideAfter: false,
+                position: 'bottom-right',
+                bgColor: '#7EC857'
+            });
+        </script>
+    <?php else : ?>
 
+    <?php endif; ?>
 </body>
 
 </html>

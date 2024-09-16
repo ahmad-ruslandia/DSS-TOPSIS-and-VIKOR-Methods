@@ -190,7 +190,7 @@
             </div>
             <div id="main-wrapper">
                 <div class="row">
-                    <form class="form-horizontal" action="<?php echo base_url() . 'backend/settings/update' ?>" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" method="post" enctype="multipart/form-data">
                         <div class="col-md-12">
                             <div class="panel panel-white">
 
@@ -272,22 +272,7 @@
     <script src="<?php echo base_url() . 'assets/plugins/datatables/js/jquery.datatables.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/js/modern.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'assets/plugins/toastr/jquery.toast.min.js' ?>"></script>
-    <!--Toast Message-->
-    <?php if ($this->session->flashdata('msg') == 'success') : ?>
-        <script type="text/javascript">
-            $.toast({
-                heading: 'Success',
-                text: "Site Information Saved!",
-                showHideTransition: 'slide',
-                icon: 'success',
-                hideAfter: false,
-                position: 'bottom-right',
-                bgColor: '#7EC857'
-            });
-        </script>
-    <?php else : ?>
 
-    <?php endif; ?>
 
 </body>
 
