@@ -66,8 +66,6 @@
 			==================================================-->
 		<main class="cd-main-content mt-100">
 
-
-
 			<!-- SECTION ABOUT
 				================================================== 	-->
 			<section class="page-section small-section">
@@ -102,7 +100,6 @@
 
 								<!--POST TAG-->
 								<div class="post-meta-section clearfix">
-
 									<div class="float-left font-face1 post-meta-holder nomargin">TAGS &mdash;
 										<?php
 										$split_tag = explode(",", $tags);
@@ -111,19 +108,15 @@
 											<a href="<?php echo site_url('tag/' . $tag); ?>"><?php echo $tag; ?></a> &vert;
 										<?php endforeach; ?>
 									</div>
-
 									<div class="float-right">
 										<div class="SocialShareArticle" style="color: #fff;font-size: 10px;"></div>
 									</div>
-
 								</div>
-
 
 								<!--POST COMMENT-->
 								<div class="comments-heading text-center mb-30 mt-60">
 									<hgroup>
 										<h2 class="font-face1 section-heading"><?php echo $comment; ?> Comments</h2>
-
 									</hgroup>
 								</div>
 

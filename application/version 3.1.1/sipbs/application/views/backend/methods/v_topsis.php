@@ -165,6 +165,29 @@
                             </ul>
                         </li>
                     <?php else : ?>
+                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-pushpin"></span>
+                                <p>Kriteria</p><span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="<?php echo site_url('backend/criteria'); ?>">Kriteria</a></li>
+                                <li><a href="<?php echo site_url('backend/crips'); ?>">Nilai Crips</a></li>
+                            </ul>
+                        </li>
+                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-pencil"></span>
+                                <p>Alternatif</p><span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="<?php echo site_url('backend/alternative'); ?>">Alternatif</a></li>
+                            </ul>
+                        </li>
+                        <li class="droplink active open"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-stats"></span>
+                                <p>Perhitungan</p><span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="active"><a href="<?php echo site_url('backend/calculation/topsis'); ?>">TOPSIS</a></li>
+                                <li><a href="<?php echo site_url('backend/calculation/vikor'); ?>">VIKOR</a></li>
+                            </ul>
+                        </li>
                     <?php endif; ?>
                     <li><a href="<?php echo site_url('logout'); ?>" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-log-out"></span>
                             <p>Log Out</p>
@@ -185,33 +208,36 @@
             <div id="main-wrapper">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="panel panel-primary">
-                            <div class="panel-body">
-                                <div class="panel-heading">Hasil Analisa</div>
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Kode</th>
-                                                <th>Nama</th>
-                                                <?php foreach ($criteria as $key => $val) : ?>
-                                                    <th><?= $val->nama_criteria ?></th>
-                                                <?php endforeach ?>
-                                            </tr>
-                                        </thead>
-                                        <?php foreach ($rel_alternative as $key => $val) : ?>
-                                            <tr>
-                                                <td><?= $key ?></td>
-                                                <td><?= $alternative[$key]->nama_alternative ?></td>
-                                                <?php foreach ($val as $k => $v) : ?>
-                                                    <td><?= (isset($crips[$v]->nama_crips)) ? $crips[$v]->nama_crips : "-" ?></td>
-                                                <?php endforeach ?>
-                                            </tr>
-                                        <?php endforeach ?>
-                                    </table>
+                        <?php if ($this->session->userdata('access') == '1') : ?>
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <div class="panel-heading">Hasil Analisa</div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Kode</th>
+                                                    <th>Nama</th>
+                                                    <?php foreach ($criteria as $key => $val) : ?>
+                                                        <th><?= $val->nama_criteria ?></th>
+                                                    <?php endforeach ?>
+                                                </tr>
+                                            </thead>
+                                            <?php foreach ($rel_alternative as $key => $val) : ?>
+                                                <tr>
+                                                    <td><?= $key ?></td>
+                                                    <td><?= $alternative[$key]->nama_alternative ?></td>
+                                                    <?php foreach ($val as $k => $v) : ?>
+                                                        <td><?= (isset($crips[$v]->nama_crips)) ? $crips[$v]->nama_crips : "-" ?></td>
+                                                    <?php endforeach ?>
+                                                </tr>
+                                            <?php endforeach ?>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php else : ?>
+                        <?php endif; ?>
                         <div class="panel panel-primary">
                             <div class="panel-body">
                                 <div class="panel-heading">Data Nilai</div>
@@ -368,7 +394,10 @@
                                         <?php endforeach ?>
                                     </table>
                                 </div>
-                                <a class="btn btn-default" href="<?= site_url('backend/calculation/topsis_cetak') ?>" target="_blank"><span class="glyphicon glyphicon-print"></span> Cetak</a>
+                                <?php if ($this->session->userdata('access') == '1') : ?>
+                                    <a class="btn btn-default" href="<?= site_url('backend/calculation/topsis_cetak') ?>" target="_blank"><span class="glyphicon glyphicon-print"></span> Cetak</a>
+                                <?php else : ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

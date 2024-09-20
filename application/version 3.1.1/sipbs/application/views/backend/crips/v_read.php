@@ -167,6 +167,29 @@
                             </ul>
                         </li>
                     <?php else : ?>
+                        <li class="droplink active open"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-pushpin"></span>
+                                <p>Kriteria</p><span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="<?php echo site_url('backend/criteria'); ?>">Kriteria</a></li>
+                                <li class="active"><a href="<?php echo site_url('backend/crips'); ?>">Nilai Crips</a></li>
+                            </ul>
+                        </li>
+                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-pencil"></span>
+                                <p>Alternatif</p><span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="<?php echo site_url('backend/alternative'); ?>">Alternatif</a></li>
+                            </ul>
+                        </li>
+                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-stats"></span>
+                                <p>Perhitungan</p><span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="<?php echo site_url('backend/calculation/topsis'); ?>">TOPSIS</a></li>
+                                <li><a href="<?php echo site_url('backend/calculation/vikor'); ?>">VIKOR</a></li>
+                            </ul>
+                        </li>
                     <?php endif; ?>
                     <li><a href="<?php echo site_url('logout'); ?>" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-log-out"></span>
                             <p>Log Out</p>
@@ -196,9 +219,14 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Kriteria</th>
-                                            <th>Nama Crips</th>
-                                            <th>Nilai</th>
-                                            <th>Aksi</th>
+                                            <?php if ($this->session->userdata('access') == '1') : ?>
+                                                <th>Nama Crips</th>
+                                                <th>Nilai</th>
+                                                <th>Aksi</th>
+                                            <?php else : ?>
+                                                <th>Nama Crips</th>
+                                                <th>Nilai</th>
+                                            <?php endif; ?>
                                         </tr>
                                     </thead>
                                     <?php
@@ -207,19 +235,27 @@
                                         <tr>
                                             <td><?= ++$no ?></td>
                                             <td><?= $row->nama_criteria ?></td>
-                                            <td><?= $row->nama_crips ?></td>
-                                            <td><?= $row->nilai ?></td>
-                                            <td style="vertical-align: middle;">
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                        Action <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                                        <li><a href="<?= site_url("backend/crips/edit/$row->kode_crips") ?>"><span class="icon-pencil"></span> Ubah</a></li>
-                                                        <li><a href="<?= site_url("backend/crips/delete/$row->kode_crips") ?>"><span class="icon-trash"></span> Hapus</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
+                                            <?php if ($this->session->userdata('access') == '1') : ?>
+                                                <td><?= $row->nama_crips ?></td>
+                                                <td><?= $row->nilai ?></td>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                            Action <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                                            <li><a href="<?= site_url("backend/crips/edit/$row->kode_crips") ?>"><span class="icon-pencil"></span> Ubah</a></li>
+                                                            <li><a href="<?= site_url("backend/crips/delete/$row->kode_crips") ?>"><span class="icon-trash"></span> Hapus</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            <?php else : ?>
+                                                <td>
+                                                    <p>-- Mohon Maaf Data Bersifat Rahasia -- </p>
+                                                </td>
+                                                <td><?= $row->nilai ?></td>
+                                            <?php endif; ?>
+
                                         </tr>
                                     <?php endforeach ?>
                                 </table>
@@ -230,12 +266,15 @@
                                         <div class="panel-body">
                                             <div class="col-md-12">
                                                 <form class="form-inline">
-                                                    <div class="form-group">
-                                                        <a class="btn btn-default" href="<?= site_url('backend/crips/add') ?>"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <a class="btn btn-default" target="_blank" href="<?= site_url('backend/crips/cetak?search=' . $this->input->get('search')) ?>"><span class="glyphicon glyphicon-print"></span> Cetak</a>
-                                                    </div>
+                                                    <?php if ($this->session->userdata('access') == '1') : ?>
+                                                        <div class="form-group">
+                                                            <a class="btn btn-default" href="<?= site_url('backend/crips/add') ?>"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <a class="btn btn-default" target="_blank" href="<?= site_url('backend/crips/cetak?search=' . $this->input->get('search')) ?>"><span class="glyphicon glyphicon-print"></span> Cetak</a>
+                                                        </div>
+                                                    <?php else : ?>
+                                                    <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>

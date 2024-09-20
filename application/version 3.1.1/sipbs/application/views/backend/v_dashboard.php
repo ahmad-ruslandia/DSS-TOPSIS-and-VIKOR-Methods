@@ -170,11 +170,27 @@
                             </ul>
                         </li>
                     <?php else : ?>
+                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-pushpin"></span>
+                                <p>Kriteria</p><span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="<?php echo site_url('backend/criteria'); ?>">Kriteria</a></li>
+                                <li><a href="<?php echo site_url('backend/crips'); ?>">Nilai Crips</a></li>
+                            </ul>
+                        </li>
                         <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-pencil"></span>
                                 <p>Alternatif</p><span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
                                 <li><a href="<?php echo site_url('backend/alternative'); ?>">Alternatif</a></li>
+                            </ul>
+                        </li>
+                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-stats"></span>
+                                <p>Perhitungan</p><span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="<?php echo site_url('backend/calculation/topsis'); ?>">TOPSIS</a></li>
+                                <li><a href="<?php echo site_url('backend/calculation/vikor'); ?>">VIKOR</a></li>
                             </ul>
                         </li>
                     <?php endif; ?>

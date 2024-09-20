@@ -17,6 +17,9 @@
 	<link rel="stylesheet" href="<?php echo base_url('theme/css/bootstrap.min.css') ?>" />
 	<link rel="stylesheet" href="<?php echo base_url('theme/css/style.css') ?>" />
 	<link rel="stylesheet" href="<?php echo base_url('theme/css/padding-margin.css') ?>" />
+	<link rel="stylesheet" href="<?php echo base_url('theme/datatables/datatables.css') ?>" />
+	<link rel="stylesheet" href="<?php echo base_url('theme/datatables/datatables.min.css') ?>" />
+
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="<?php echo base_url('theme/images/' . $icon); ?>">
 	<!-- SEO Tag -->
@@ -38,7 +41,6 @@
 	<meta name="twitter:site" content="<?php echo $site_twitter; ?>" />
 	<meta name="twitter:image" content="<?php echo base_url() . 'theme/images/' . $site_image ?>" />
 	<link rel="stylesheet" href="<?php echo base_url() . 'theme/css/font-awesome.min.css' ?>" />
-	<link rel="stylesheet" href="<?php echo base_url() . 'theme/css/table-awesome.min.css' ?>" />
 
 	<!-- End SEO Tag. -->
 </head>
@@ -74,9 +76,9 @@
 							<h2 class="font-face1 heading2 fw700 mb-40 mb-xs-30"><?php echo $caption_2; ?></h2>
 							<h1 class="font-face1 heading1 fw700 mb-40 mb-xs-30"><?php echo $caption_1; ?></h1>
 							<div class="local-scroll">
-								<a href="<?php echo site_url('about'); ?>" class="btn bg-black white-color">Tentang</a>
+								<a href="<?php echo site_url('about'); ?>" class="btn bg-black white-color hidden-xs">Tentang</a>
 								<span class="btn_seperator"></span>
-								<a href="<?php echo site_url('login'); ?>" class="btn bg-black whitre-color hidden-xs">Masuk</a>
+								<a href="<?php echo site_url('login'); ?>" class="btn bg-black whitre-color">Masuk</a>
 							</div>
 						</div>
 					</div>
@@ -87,7 +89,7 @@
 			<!-- SECTION BLOG
 				================================================== -->
 			<section id="thoughts" class="page-section big-section">
-				<div class="shadow-title shadow-gray unselectable parallax-1">RANK</div>
+				<div class="shadow-title shadow-gray unselectable parallax-1">Rangking</div>
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 mb-10 mb-sm-40 text-center">
@@ -95,36 +97,35 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="table-responsive">
-							<table class="table table-bordered table-hover styled-table">
-								<thead>
-									<tr>
-										<th>No</th>
-										<th>Kode</th>
-										<th>Nama Alternatif</th>
-										<th>Keterangan</th>
-										<th>Total TOPSIS</th>
-										<th>Total VIKOR</th>
-										<th>Rank TOPSIS</th>
-										<th>Rank VIKOR</th>
-									</tr>
-								</thead>
-								<?php
-								$no = 0;
-								foreach ($rows as $row) : ?>
-									<tr>
-										<td><?= ++$no ?></td>
-										<td><?= $row->kode_alternative ?></td>
-										<td><?= $row->nama_alternative ?></td>
-										<td><?= $row->keterangan ?></td>
-										<td><?= round($row->total_topsis, 4) ?></td>
-										<td><?= round($row->total_vikor, 4) ?></td>
-										<td><?= $row->rank_topsis ?></td>
-										<td><?= $row->rank_vikor ?></td>
-									</tr>
-								<?php endforeach ?>
-							</table>
-						</div>
+
+						<table id="mytable" class="table table-striped table-bordered table-dark" style="width: 100%; cellspacing: 0;">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Kode</th>
+									<th>Nama Alternatif</th>
+									<th>Keterangan</th>
+									<th>Total TOPSIS</th>
+									<th>Total VIKOR</th>
+									<th>Rank TOPSIS</th>
+									<th>Rank VIKOR</th>
+								</tr>
+							</thead>
+							<?php
+							$no = 0;
+							foreach ($rows as $row) : ?>
+								<tr>
+									<td><?= ++$no ?></td>
+									<td><?= $row->kode_alternative ?></td>
+									<td><?= $row->nama_alternative ?></td>
+									<td><?= $row->keterangan ?></td>
+									<td><?= round($row->total_topsis, 4) ?></td>
+									<td><?= round($row->total_vikor, 4) ?></td>
+									<td><?= $row->rank_topsis ?></td>
+									<td><?= $row->rank_vikor ?></td>
+								</tr>
+							<?php endforeach ?>
+						</table>
 
 
 					</div>
@@ -261,6 +262,16 @@
 	<script src="<?php echo base_url('theme/js/slick.min.js') ?>"></script>
 	<script src="<?php echo base_url('theme/js/wow.min.js') ?>"></script>
 	<script src="<?php echo base_url('theme/js/script.js') ?>"></script>
+	<script src="<?php echo base_url('theme/datatables/datatables.js') ?>"></script>
+	<script src="<?php echo base_url('theme/datatables/datatables.min.js') ?>"></script>
+
 </body>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#mytable').DataTable();
+	});
+</script>
 
 </html>

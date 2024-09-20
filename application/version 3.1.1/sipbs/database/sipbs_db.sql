@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Sep 2024 pada 19.32
+-- Waktu pembuatan: 20 Sep 2024 pada 11.20
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 5.6.40
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `spk_db`
+-- Database: `sipbs_db`
 --
 
 -- --------------------------------------------------------
@@ -165,7 +165,7 @@ CREATE TABLE `tbl_post` (
 --
 
 INSERT INTO `tbl_post` (`post_id`, `post_title`, `post_description`, `post_contents`, `post_image`, `post_date`, `post_last_update`, `post_category_id`, `post_tags`, `post_slug`, `post_status`, `post_views`, `post_user_id`) VALUES
-(2, 'Penerapan Prinsip Reduce Reuse Recycle (3R) pada Bank Sampah', '', '', '99e3bca4cbd0742b05cf64654c646ad3.jpg', '2024-09-16 07:55:05', NULL, 4, 'reduce-reuse-recycle', 'penerapan-prinsip-reduce-reuse-recycle--3r--pada-bank-sampah', 1, 0, 3);
+(2, 'Penerapan Prinsip Reduce Reuse Recycle (3R) pada Bank Sampah', '', '', '99e3bca4cbd0742b05cf64654c646ad3.jpg', '2024-09-16 07:55:05', NULL, 4, 'reduce-reuse-recycle', 'penerapan-prinsip-reduce-reuse-recycle--3r--pada-bank-sampah', 1, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -179,6 +179,13 @@ CREATE TABLE `tbl_post_views` (
   `view_ip` varchar(50) DEFAULT NULL,
   `view_post_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_post_views`
+--
+
+INSERT INTO `tbl_post_views` (`view_id`, `view_date`, `view_ip`, `view_post_id`) VALUES
+(1, '2024-09-19 14:50:27', '::1', 2);
 
 -- --------------------------------------------------------
 
@@ -207,7 +214,7 @@ CREATE TABLE `tbl_site` (
 --
 
 INSERT INTO `tbl_site` (`site_id`, `site_name`, `site_title`, `site_description`, `site_favicon`, `site_logo_header`, `site_logo_footer`, `site_logo_big`, `site_facebook`, `site_twitter`, `site_instagram`, `site_pinterest`, `site_linkedin`) VALUES
-(1, 'Sistem Informasi Perangkingan Bank Sampah', 'SIPBS', 'Personal Blog', 'PicsArt_07-16-08_36_28_(1)1.png', 'logo-black1.png', 'favicon.png', 'LOGO-BIG.png', 'https://www.facebook.com/wandaatifah.wandaatifah', '#', 'https://www.instagram.com/wandaathifah/', '#', '#');
+(1, 'Sistem Informasi Perangkingan Bank Sampah', 'SIPBS', 'Personal Blog', 'PicsArt_07-16-08_36_28_(1)1.png', 'logo-black1.png', 'favicon.png', 'logo-black1.png', 'https://www.facebook.com/wandaatifah.wandaatifah', '#', 'https://www.instagram.com/wandaathifah/', '#', '#');
 
 -- --------------------------------------------------------
 
@@ -291,7 +298,10 @@ CREATE TABLE `tbl_visitors` (
 
 INSERT INTO `tbl_visitors` (`visit_id`, `visit_date`, `visit_ip`, `visit_platform`) VALUES
 (541424, '2024-09-15 16:34:50', '::1', 'Chrome'),
-(541425, '2024-09-16 16:04:15', '::1', 'Chrome');
+(541425, '2024-09-16 16:04:15', '::1', 'Chrome'),
+(541426, '2024-09-17 16:19:09', '::1', 'Chrome'),
+(541427, '2024-09-19 12:09:36', '::1', 'Chrome'),
+(541428, '2024-09-19 16:10:18', '::1', 'Chrome');
 
 -- --------------------------------------------------------
 
@@ -591,7 +601,7 @@ ALTER TABLE `tbl_post`
 -- AUTO_INCREMENT untuk tabel `tbl_post_views`
 --
 ALTER TABLE `tbl_post_views`
-  MODIFY `view_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `view_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_site`
@@ -621,7 +631,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT untuk tabel `tbl_visitors`
 --
 ALTER TABLE `tbl_visitors`
-  MODIFY `visit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=541426;
+  MODIFY `visit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=541429;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_crips`
