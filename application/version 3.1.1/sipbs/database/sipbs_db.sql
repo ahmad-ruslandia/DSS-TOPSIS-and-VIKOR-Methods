@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Sep 2024 pada 11.20
+-- Waktu pembuatan: 21 Sep 2024 pada 18.14
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 5.6.40
 
@@ -136,7 +136,8 @@ INSERT INTO `tbl_navbar` (`navbar_id`, `navbar_name`, `navbar_slug`, `navbar_par
 (1, 'Beranda', NULL, 0),
 (2, 'Tentang', 'about', 0),
 (3, 'Berita', 'blog', 0),
-(4, 'Kontak', 'contact', 0);
+(4, 'Kontak', 'contact', 0),
+(5, 'Masuk', 'login', 0);
 
 -- --------------------------------------------------------
 
@@ -214,7 +215,7 @@ CREATE TABLE `tbl_site` (
 --
 
 INSERT INTO `tbl_site` (`site_id`, `site_name`, `site_title`, `site_description`, `site_favicon`, `site_logo_header`, `site_logo_footer`, `site_logo_big`, `site_facebook`, `site_twitter`, `site_instagram`, `site_pinterest`, `site_linkedin`) VALUES
-(1, 'Sistem Informasi Perangkingan Bank Sampah', 'SIPBS', 'Personal Blog', 'PicsArt_07-16-08_36_28_(1)1.png', 'logo-black1.png', 'favicon.png', 'logo-black1.png', 'https://www.facebook.com/wandaatifah.wandaatifah', '#', 'https://www.instagram.com/wandaathifah/', '#', '#');
+(1, 'Sistem Informasi Perangkingan Bank Sampah', 'SIPBS', 'Personal Blog', 'PicsArt_07-16-08_36_28_(1)1.png', 'logo-black1.png', 'favicon.png', 'logo-black1.png', '#', '#', '#', '#', '#');
 
 -- --------------------------------------------------------
 
@@ -301,7 +302,9 @@ INSERT INTO `tbl_visitors` (`visit_id`, `visit_date`, `visit_ip`, `visit_platfor
 (541425, '2024-09-16 16:04:15', '::1', 'Chrome'),
 (541426, '2024-09-17 16:19:09', '::1', 'Chrome'),
 (541427, '2024-09-19 12:09:36', '::1', 'Chrome'),
-(541428, '2024-09-19 16:10:18', '::1', 'Chrome');
+(541428, '2024-09-19 16:10:18', '::1', 'Chrome'),
+(541429, '2024-09-21 15:24:06', '::1', 'Chrome'),
+(541430, '2024-09-21 16:13:27', '::1', 'Chrome');
 
 -- --------------------------------------------------------
 
@@ -589,7 +592,7 @@ ALTER TABLE `tbl_inbox`
 -- AUTO_INCREMENT untuk tabel `tbl_navbar`
 --
 ALTER TABLE `tbl_navbar`
-  MODIFY `navbar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `navbar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_post`
@@ -631,7 +634,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT untuk tabel `tbl_visitors`
 --
 ALTER TABLE `tbl_visitors`
-  MODIFY `visit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=541429;
+  MODIFY `visit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=541431;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_crips`
