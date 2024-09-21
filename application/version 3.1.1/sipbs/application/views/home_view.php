@@ -41,6 +41,7 @@
 	<meta name="twitter:site" content="<?php echo $site_twitter; ?>" />
 	<meta name="twitter:image" content="<?php echo base_url() . 'theme/images/' . $site_image ?>" />
 	<link rel="stylesheet" href="<?php echo base_url() . 'theme/css/font-awesome.min.css' ?>" />
+	<link rel="stylesheet" href="<?php echo base_url() . 'theme/css/table-awesome.min.css' ?>" />
 
 	<!-- End SEO Tag. -->
 </head>
@@ -89,45 +90,43 @@
 			<!-- SECTION BLOG
 				================================================== -->
 			<section id="thoughts" class="page-section big-section">
-				<div class="shadow-title shadow-gray unselectable parallax-1">Rangking</div>
 				<div class="container">
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3 mb-10 mb-sm-40 text-center">
-							<h2 class="font-face1 section-heading fw800 mt-0 text-center">BANK SAMPAH TERAKTIF</h2>
+					<div class="card-table table-responsive">
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3 mb-10 mb-sm-40 text-center">
+								<h2 class="font-face1 section-heading fw400 mt-0 text-center">BANK SAMPAH TERAKTIF</h2>
+							</div>
 						</div>
-					</div>
-					<div class="row">
-
-						<table id="mytable" class="table table-striped table-bordered table-dark" style="width: 100%; cellspacing: 0;">
-							<thead>
-								<tr>
-									<th>No</th>
-									<th>Kode</th>
-									<th>Nama Alternatif</th>
-									<th>Keterangan</th>
-									<th>Total TOPSIS</th>
-									<th>Total VIKOR</th>
-									<th>Rank TOPSIS</th>
-									<th>Rank VIKOR</th>
-								</tr>
-							</thead>
-							<?php
-							$no = 0;
-							foreach ($rows as $row) : ?>
-								<tr>
-									<td><?= ++$no ?></td>
-									<td><?= $row->kode_alternative ?></td>
-									<td><?= $row->nama_alternative ?></td>
-									<td><?= $row->keterangan ?></td>
-									<td><?= round($row->total_topsis, 4) ?></td>
-									<td><?= round($row->total_vikor, 4) ?></td>
-									<td><?= $row->rank_topsis ?></td>
-									<td><?= $row->rank_vikor ?></td>
-								</tr>
-							<?php endforeach ?>
-						</table>
-
-
+						<div class="row">
+							<table id="mytable" class="table table-striped table-bordered table-dark" style="width: 100%; cellspacing: 0;">
+								<thead>
+									<tr>
+										<th>No</th>
+										<th>Kode</th>
+										<th>Nama Alternatif</th>
+										<th>Keterangan</th>
+										<th>Total TOPSIS</th>
+										<th>Total VIKOR</th>
+										<th>Rank TOPSIS</th>
+										<th>Rank VIKOR</th>
+									</tr>
+								</thead>
+								<?php
+								$no = 0;
+								foreach ($rows as $row) : ?>
+									<tr>
+										<td><?= ++$no ?></td>
+										<td><?= $row->kode_alternative ?></td>
+										<td><?= $row->nama_alternative ?></td>
+										<td><?= $row->keterangan ?></td>
+										<td><?= round($row->total_topsis, 4) ?></td>
+										<td><?= round($row->total_vikor, 4) ?></td>
+										<td><?= $row->rank_topsis ?></td>
+										<td><?= $row->rank_vikor ?></td>
+									</tr>
+								<?php endforeach ?>
+							</table>
+						</div>
 					</div>
 				</div>
 

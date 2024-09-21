@@ -5056,6 +5056,12 @@ fill:var(--bgcolor);
 	padding:40px;
 	min-height:180px;
 }
+.card-table{
+	position:relative;
+	background-color:#fff;
+	padding:40px 60px 40px 60px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
 .card-footer{
 	position:relative;
 	background-color:#f2f2f2;
