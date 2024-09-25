@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Sep 2024 pada 18.14
+-- Waktu pembuatan: 25 Sep 2024 pada 10.55
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 5.6.40
 
@@ -215,7 +215,7 @@ CREATE TABLE `tbl_site` (
 --
 
 INSERT INTO `tbl_site` (`site_id`, `site_name`, `site_title`, `site_description`, `site_favicon`, `site_logo_header`, `site_logo_footer`, `site_logo_big`, `site_facebook`, `site_twitter`, `site_instagram`, `site_pinterest`, `site_linkedin`) VALUES
-(1, 'Sistem Informasi Perangkingan Bank Sampah', 'SIPBS', 'Personal Blog', 'PicsArt_07-16-08_36_28_(1)1.png', 'logo-black1.png', 'favicon.png', 'logo-black1.png', '#', '#', '#', '#', '#');
+(1, 'Sistem Informasi Perangkingan Bank Sampah', 'SIPBS', '', 'PicsArt_07-16-08_36_28_(1)1.png', 'logo-black1.png', 'favicon.png', 'logo-black1.png', '#', '#', '#', '#', '#');
 
 -- --------------------------------------------------------
 
@@ -304,7 +304,9 @@ INSERT INTO `tbl_visitors` (`visit_id`, `visit_date`, `visit_ip`, `visit_platfor
 (541427, '2024-09-19 12:09:36', '::1', 'Chrome'),
 (541428, '2024-09-19 16:10:18', '::1', 'Chrome'),
 (541429, '2024-09-21 15:24:06', '::1', 'Chrome'),
-(541430, '2024-09-21 16:13:27', '::1', 'Chrome');
+(541430, '2024-09-21 16:13:27', '::1', 'Chrome'),
+(541431, '2024-09-23 10:48:54', '::1', 'Chrome'),
+(541432, '2024-09-24 03:25:16', '::1', 'Chrome');
 
 -- --------------------------------------------------------
 
@@ -634,7 +636,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT untuk tabel `tbl_visitors`
 --
 ALTER TABLE `tbl_visitors`
-  MODIFY `visit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=541431;
+  MODIFY `visit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=541433;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_crips`
